@@ -1,24 +1,29 @@
 var mongoClient = require('mongodb').MongoClient;
 var dbConnectStr = 'mongodb://localhost:27017/items';
 
-var findAllItems = function (db, callback) {
-    
-    var collection = db.collection('items');
+var getAllItems = function () {
 
-    collection.find({},{'_id':0}).toArray(function(err, result){
-        if (err){
+    var findAllItems = function (db, callback) {
+
+        var collection = db.collection('items');
+
+        collection.find({}, {'_id': 0}).toArray(function (err, result) {
+            if (err) {
+                throw err;
+            }
+            callback(result);
+        });
+    };
+
+    mongoClient.connect(dbConnectStr, function (err, db) {
+        if (err) {
             throw err;
         }
-        callback(result);
+        findAllItems(db, function (result) {
+            console.log(result);
+            db.close();
+        })
     });
 };
 
-mongoClient.connect(dbConnectStr, function (err, db) {
-    if (err){
-        throw err;
-    }
-    findAllItems(db, function (result) {
-        console.log(result);
-        db.close();
-    })
-});
+module.exports = getAllItems;
