@@ -2,7 +2,7 @@ var mongoClient = require('mongodb').MongoClient;
 var dbConnectStr = 'mongodb://localhost:27017/items';
 var scanf = require('scanf');
 
-var getItem = function () {
+var getItemByBarcode = function () {
 
 
     var findItem = function (db, callback) {
@@ -34,4 +34,4 @@ var getItem = function () {
     });
 };
 
-module.exports = getItem;
+module.exports = getItemByBarcode;

@@ -1,9 +1,9 @@
 var scanf = require('scanf');
 
-// var addItems = require('./add-items');
+var addItems = require('./add-items');
 var deleteItem = require('./delete-item');
 var getAllItems = require('./get-all-items');
-var getItem = require('./get-item');
+var getItemByBarcode = require('./get-item-by-barcode');
 var updateItem = require('./update-item');
 
 displayMenu();
@@ -14,7 +14,7 @@ switch (chioce){
     case 1: addItems(); break;
     case 2: deleteItem(); break;
     case 3: getAllItems(); break;
-    case 4:getItem(); break;
+    case 4:selectItemMenu(); break;
     case 5: updateItem(); break;
 
 }
@@ -28,6 +28,15 @@ function displayMenu() {
         '3. 查看所有商品信息\n' +
         '4. 查看指定商品信息\n' +
         '5. 修改商品信息');
+}
+
+function selectItemMenu() {
+    console.log('1.按barcode进行查找 ' + '\t' + '2.按商品名字进行查找');
+
+    switch(scanf('%d')){
+        case 1:getItemByBarcode();
+        // case 2:getItemsByname();
+    }
 }
 
 // operateItems();
