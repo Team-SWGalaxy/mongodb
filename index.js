@@ -4,6 +4,7 @@ var addItems = require('./add-items');
 var deleteItem = require('./delete-item');
 var getAllItems = require('./get-all-items');
 var getItemByBarcode = require('./get-item-by-barcode');
+var getItemsByName = require('./get-items-by-name');
 var updateItem = require('./update-item');
 
 displayMenu();
@@ -35,7 +36,7 @@ function selectItemMenu() {
 
     switch(scanf('%d')){
         case 1:getItemByBarcode();
-        // case 2:getItemsByname();
+        case 2:getItemsByName();
     }
 }
 
