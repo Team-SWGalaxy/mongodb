@@ -12,7 +12,7 @@ var updateItem = function () {
         var queryStr = {"barcode": scanf('%d')};
 
         console.log('请输入要修改的信息,并以逗号隔开(不填则仍为原值)：\n' +
-            'name  price  unit  demo(选填)');
+            'name  price  unit  memo(选填)');
         var updateData = scanf('%s').split(',');
 
         var data = modifyItem(updateData);
@@ -32,7 +32,6 @@ var updateItem = function () {
         }
         alterItem(db, function (result) {
             console.log(result);
-            // console.log(update.ok);
             db.close();
         })
     });
@@ -49,7 +48,7 @@ var updateItem = function () {
             data.unit = updatedata[2];
         }
         if (updatedata[3]) {
-            data.demo = updatedata[3];
+            data.memo = updatedata[3];
         }
 
         return data;
