@@ -26,7 +26,14 @@ var deleteItem = function () {
             console.log(err);
         }
         removeItem(db, function (result) {
-            console.log('删除成功');
+
+            if (result.result.n) {
+                console.log('删除成功');
+            }
+            else {
+                console.log('not found');
+                deleteItem();
+            }
             db.close();
         });
     });
