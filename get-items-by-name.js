@@ -10,9 +10,9 @@ var getItemsByName = function () {
 
         console.log('请输入要查询的商品的名字');
         var name = scanf('%s');
-        var queryStr = {name: new RegExp("^.*"+name+".*$")};
+        var queryStr = {name: new RegExp("^.*" + name + ".*$")};
 
-        collection.find(queryStr, {'_id': 0}).toArray( function (err, result) {
+        collection.find(queryStr, {'_id': 0}).toArray(function (err, result) {
             if (err) {
                 throw err;
             }
