@@ -10,7 +10,7 @@ var addItem = function () {
 
         var data = {};
         data = getInputs();
-        
+
         collection.insert(data, function (err, result) {
             if (err) {
                 throw err;
@@ -24,9 +24,10 @@ var addItem = function () {
     mongoClient.connect(dbConnectStr, function (err, db) {
 
         insertItems(db, function (result) {
-            console.log(result);
+            console.log(result.ops[0]);
             db.close();
         });
+
     });
 
     function getInputs() {
@@ -35,27 +36,26 @@ var addItem = function () {
         var inputs = scanf('%s').split(',');
 
         var data = judgeType(inputs);
-        if (data === null) {
-            var t = getInputs();
+        if (data) {
+
+            return data;
         }
         else {
-            // console.log(data);
-            return data;
+
+            return getInputs();
         }
     }
 
     function judgeType(insertData) {
         if (parseInt(insertData[0]) && insertData[1] && parseFloat(insertData[2]) && insertData[3]) {
 
-            var data = {
+            return {
                 barcode: parseInt(insertData[0]),
                 name: insertData[1],
                 price: parseFloat(insertData[2]),
                 unit: insertData[3],
                 memo: insertData[4]
             };
-            // console.log(data);
-            return data;
         }
         else {
             console.log('必填项未填写完整或输入格式有误，请重新输入\n');
