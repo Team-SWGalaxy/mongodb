@@ -35,8 +35,8 @@ function selectItemMenu() {
     console.log('1.按barcode进行查找 ' + '\t' + '2.按商品名字进行查找');
 
     switch(scanf('%d')){
-        case 1:getItemByBarcode();
-        case 2:getItemsByName();
+        case 1:getItemByBarcode(); break;
+        case 2:getItemsByName(); break;
     }
 }
 
