@@ -3,8 +3,7 @@ var dbConnectStr = 'mongodb://localhost:27017/items';
 var scanf = require('scanf');
 
 var getItemByBarcode = function () {
-
-
+    
     var findItem = function (db, callback) {
 
         var collection = db.collection('items');
